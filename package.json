@@ -1,0 +1,16 @@
+{
+  "name": "happy-mail-apps",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "loginScreen": "node loginScreen.js",
+    "registerScreen": "node registerScreen.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "wd": "^1.14.0"
+  }
+}
