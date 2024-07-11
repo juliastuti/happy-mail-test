@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "loginScreen": "node loginScreen.js",
-    "registerScreen": "node registerScreen.js"
+    "login": "node spec/login.js"
   },
   "keywords": [],
   "author": "",
