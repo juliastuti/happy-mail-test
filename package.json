@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "allCases": "node spec/allCases.js",
     "case1and2": "node spec/case1and2.js",
     "case3": "node spec/case3.js",
     "case4until7": "node spec/case4until7.js",
