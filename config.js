@@ -1,4 +1,4 @@
-// config.js
+//config.js
 module.exports = {
     capabilities: {
       "appium:platformName": "Android",

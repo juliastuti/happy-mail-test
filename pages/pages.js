@@ -1,9 +1,98 @@
+class SplashScreen {
+  async waitForSplashScreen(driver) {
+    const splashScreen = await driver.$(
+      'android=new UiSelector().resourceId("jp.co.i_bec.suteki_happy:id/activity_default_container")'
+    );
+    await splashScreen.waitForDisplayed({ timeout: 20000 });
+  }
+
+  async checkSplashElements(driver) {
+    const splashElement = await driver.$(
+      'android=new UiSelector().className("android.widget.ImageView")'
+    );
+    if (!(await splashElement.isDisplayed())) {
+      throw new Error(`Element ${splashElement} is not displayed`);
+    }
+  }
+}
+
 class WelcomePage {
   async waitForWelcomePage(driver) {
     const welcomePage = await driver.$(
       'android=new UiSelector().resourceId("jp.co.i_bec.suteki_happy:id/activity_default_container")'
     );
     await welcomePage.waitForDisplayed({ timeout: 60000 });
+  }
+
+  async checkWelcomeElements(driver) {
+    const welcomeElements = [
+      "jp.co.i_bec.suteki_happy:id/fragment_start_txr_hpm", // happy mail logo
+      "jp.co.i_bec.suteki_happy:id/fragment_start_btn_register", //button register
+      "jp.co.i_bec.suteki_happy:id/fragment_start_btn_login", //button login
+      "jp.co.i_bec.suteki_happy:id/top_age_attention_btn", //18歳未満はご利用できません
+      "jp.co.i_bec.suteki_happy:id/fragment_start_tv_rule", //membershipAgreement
+      "jp.co.i_bec.suteki_happy:id/fragment_start_tv_policy", //privacyPolicy
+    ];
+
+    for (const welcomeElementId of welcomeElements) {
+      const welcomeElement = await driver.$(
+        `android=new UiSelector().resourceId("${welcomeElementId}")`
+      );
+      if (!(await welcomeElement.isDisplayed())) {
+        throw new Error(`Element with ID ${welcomeElementId} is not displayed`);
+      }
+    }
+    // check auto slide images (background image)
+    const image1 = await driver.$(
+      'android=new UiSelector().resourceId("jp.co.i_bec.suteki_happy:id/img_login_tutorial_01")'
+    );
+    const image2 = await driver.$(
+      'android=new UiSelector().resourceId("jp.co.i_bec.suteki_happy:id/img_login_tutorial_02")'
+    );
+    const image3 = await driver.$(
+      'android=new UiSelector().resourceId("jp.co.i_bec.suteki_happy:id/img_login_tutorial_03")'
+    );
+
+    console.log("waiting for image 1");
+    await driver.pause(5000);
+    if (!(await image1.isDisplayed())) {
+      throw new Error("image 1 is not displayed");
+    } else {
+      console.log("image 1 is displayed");
+    }
+
+    console.log("waiting for image 2");
+    await driver.pause(5000);
+    if (!(await image2.isDisplayed())) {
+      throw new Error("image 2 is not displayed");
+    } else {
+      console.log("image 2 is displayed");
+    }
+
+    console.log("waiting for image 3");
+    await driver.pause(5000);
+    if (!(await image3.isDisplayed())) {
+      throw new Error("image 3 is not displayed");
+    } else {
+      console.log("image 3 is displayed");
+    }
+
+    // check if the images continue sliding
+    await driver.pause(5000);
+    if (!(await image1.isDisplayed())) {
+      throw new Error("image 1 is not displayed after second slide");
+    }
+
+  }
+}
+
+class RegisterPage {
+  async goToRegisterPage(driver) {
+    const registerPageButton = await driver.$(
+      'android=new UiSelector().resourceId("jp.co.i_bec.suteki_happy:id/fragment_start_btn_register")'
+    );
+    await registerPageButton.waitForDisplayed({ timeout: 60000 });
+    await registerPageButton.click();
   }
 }
 
@@ -53,7 +142,7 @@ class LoginPage {
     await driver.hideKeyboard();
   }
 
-  async loginWithCredentials(driver, email, pwd) {
+  async loginWithCredentials(driver, email, pass) {
     const loginId = await driver.$(
       'android=new UiSelector().resourceId("jp.co.i_bec.suteki_happy:id/fragment_login_id_input")'
     );
@@ -61,20 +150,19 @@ class LoginPage {
     await loginId.setValue(email);
     await driver.hideKeyboard();
 
-    
     const password = await driver.$(
       'android=new UiSelector().resourceId("jp.co.i_bec.suteki_happy:id/fragment_login_pw_input")'
     );
     await password.click();
-    await password.setValue(pwd);
-    
+    await password.setValue(pass);
+
     const seePassword = await driver.$(
       'android=new UiSelector().resourceId("jp.co.i_bec.suteki_happy:id/fragment_login_pw_display")'
     );
     await seePassword.click();
     await driver.hideKeyboard();
   }
-  
+
   async loginDomain(driver) {
     const loginDomain = await driver.$(
       'android=new UiSelector().resourceId("jp.co.i_bec.suteki_happy:id/fragment_login_btn_domain")'
@@ -124,6 +212,8 @@ class LoginPage {
 }
 
 module.exports = {
+  SplashScreen,
   WelcomePage,
   LoginPage,
+  RegisterPage,
 };
