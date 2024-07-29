@@ -341,7 +341,7 @@ async function runCase17() {
     console.log("all login elements are displayed");
 
     // Login with valid creds
-    await loginPage.loginWithCredentials(driver, "50029963276", "juli123");
+    await loginPage.loginWithCredentials(driver, "50096347429", "ibg123456"); //Male account
     const loginButton = await driver.$(
       'android=new UiSelector().resourceId("jp.co.i_bec.suteki_happy:id/fragment_login_btn_login")'
     );
