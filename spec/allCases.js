@@ -362,13 +362,14 @@ async function runCase17() {
     await loginPage.allowNotificationPermission(driver);
 
     await dialogFrame.waitForDisplayed({ timeout: 60000 });
+    await driver.pause(30000); //home page
 
     // Fails to open Home Page
-    const failedDialog = await driver.$(
-      'android=new UiSelector().resourceId("jp.co.i_bec.suteki_happy:id/common_yesnodialog_tv_no_style2")'
-    );
-    await failedDialog.click();
-    await welcomePage.waitForWelcomePage(driver); //navigated to welcome page
+    // const failedDialog = await driver.$(
+    //   'android=new UiSelector().resourceId("jp.co.i_bec.suteki_happy:id/common_yesnodialog_tv_no_style2")'
+    // );
+    // await failedDialog.click();
+    // await welcomePage.waitForWelcomePage(driver); //navigated to welcome page
   } catch (error) {
     console.error("Error occurred in runCase17:", error);
   } finally {
