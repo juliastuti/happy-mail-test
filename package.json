@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "all": "node spec/case1and2.js && node spec/case3.js && node spec/case5.js && node spec/case6.js && node spec/case7.js && node spec/case8and9.js && node spec/case11.js && node spec/case12.js && node spec/case13.js && node spec/case14and16.js && node spec/case15.js && node spec/case17.js && node spec/case18.js && node spec/case19and20.js && node spec/case21.js",
+    "all": "node spec/case1and2.js && node spec/case3.js && node spec/case4.js && node spec/case5.js && node spec/case6.js && node spec/case7.js && node spec/case8and9.js && node spec/case11.js && node spec/case12.js && node spec/case13.js && node spec/case14and16.js && node spec/case15.js && node spec/case17.js && node spec/case18.js && node spec/case19and20.js && node spec/case21.js",
     "case1and2": "node spec/case1and2.js",
     "case3": "node spec/case3.js",
     "case4": "node spec/case4.js",
