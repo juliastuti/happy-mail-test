@@ -2,7 +2,7 @@ const { remote } = require("webdriverio");
 const { capabilities, wdOpts } = require("../config");
 const { WelcomePage, LoginPage } = require("../pages/pages");
 
-async function runTest() {
+async function runCase21() {
   wdOpts.capabilities = capabilities;
   const driver = await remote(wdOpts);
 
@@ -31,18 +31,23 @@ async function runTest() {
     );
     await membershipNumber.waitForDisplayed({ timeout: 20000 });
     await membershipNumber.click();
-    
+
     // Check all elements
-    const webView = await driver.$('android=new UiSelector().text("お問い合わせ|ﾊｯﾋﾟｰﾒｰﾙ")');
+    const webView = await driver.$(
+      'android=new UiSelector().text("お問い合わせ|ﾊｯﾋﾟｰﾒｰﾙ")'
+    );
     await webView.waitForDisplayed(5000);
     await driver.pause(10000);
-
   } catch (error) {
-    console.error("Error occurred:", error);
+    console.error("Error occurred runCase21:", error);
   } finally {
     await driver.pause(30000);
     await driver.deleteSession();
   }
 }
 
-runTest().catch(console.error);
+runCase21()
+  .then(() => console.log("runCase21 success"))
+  .catch((error) => console.error("Error in runCase21:", error));
+
+module.exports = runCase21;

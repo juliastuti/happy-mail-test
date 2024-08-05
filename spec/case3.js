@@ -2,7 +2,7 @@ const { remote } = require("webdriverio");
 const { capabilities, wdOpts } = require("../config");
 const { SplashScreen } = require("../pages/pages");
 
-async function runTest() {
+async function runCase3() {
   wdOpts.capabilities = capabilities;
   const driver = await remote(wdOpts);
 
@@ -18,13 +18,17 @@ async function runTest() {
     // Check all splash screen elements
     await splashScreen.checkSplashElements(driver);
     console.log("all splash page elements are displayed");
-
+    
   } catch (error) {
-    console.error("Error occurred:", error);
+    console.error("Error occurred in runCase3:", error);
   } finally {
     await driver.pause(30000);
     await driver.deleteSession();
   }
 }
 
-runTest().catch(console.error);
+runCase3()
+  .then(() => console.log('runCase3 success'))
+  .catch(error => console.error('Error in runCase3:', error));
+
+module.exports = runCase3;

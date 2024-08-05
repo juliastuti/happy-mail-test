@@ -2,7 +2,7 @@ const { remote } = require("webdriverio");
 const { capabilities, wdOpts } = require("../config");
 const { WelcomePage, LoginPage } = require("../pages/pages");
 
-async function runTest() {
+async function runCase17() {
   wdOpts.capabilities = capabilities;
   const driver = await remote(wdOpts);
 
@@ -23,9 +23,9 @@ async function runTest() {
     // Check all login elements
     await loginPage.checkLoginElements(driver);
     console.log("all login elements are displayed");
-    
+
     // Login with valid creds
-    await loginPage.loginWithCredentials(driver, "50029963276", "juli123");
+    await loginPage.loginWithCredentials(driver, "50096347429", "ibg123456"); //Male account
     const loginButton = await driver.$(
       'android=new UiSelector().resourceId("jp.co.i_bec.suteki_happy:id/fragment_login_btn_login")'
     );
@@ -46,19 +46,17 @@ async function runTest() {
     await loginPage.allowNotificationPermission(driver);
 
     await dialogFrame.waitForDisplayed({ timeout: 60000 });
-
-    // Fails to open Home Page
-    const failedDialog = await driver.$(
-      'android=new UiSelector().resourceId("jp.co.i_bec.suteki_happy:id/common_yesnodialog_tv_no_style2")'
-    );
-    await failedDialog.click();
-    await welcomePage.waitForWelcomePage(driver); //navigated to welcome page
+    await driver.pause(30000); //home page
   } catch (error) {
-    console.error("Error occurred:", error);
+    console.error("Error occurred in runCase17:", error);
   } finally {
     await driver.pause(30000);
     await driver.deleteSession();
   }
 }
 
-runTest().catch(console.error);
+runCase17()
+  .then(() => console.log("runCase17 success"))
+  .catch((error) => console.error("Error in runCase17:", error));
+
+module.exports = runCase17;

@@ -2,7 +2,7 @@ const { remote } = require("webdriverio");
 const { capabilities, wdOpts } = require("../config");
 const { WelcomePage, LoginPage } = require("../pages/pages");
 
-async function runTest() {
+async function runCase8And9() {
   wdOpts.capabilities = capabilities;
   const driver = await remote(wdOpts);
 
@@ -38,13 +38,16 @@ async function runTest() {
     await yesNoDialog.waitForDisplayed(10000);
     await yesNoDialog.click();
     console.log("error empty login");
-
   } catch (error) {
-    console.error("Error occurred:", error);
+    console.error("Error occurred in runCase8And9:", error);
   } finally {
     await driver.pause(30000);
     await driver.deleteSession();
   }
 }
 
-runTest().catch(console.error);
+runCase8And9()
+  .then(() => console.log("runCase8And9 success"))
+  .catch((error) => console.error("Error in runCase8And9:", error));
+
+module.exports = runCase8And9;

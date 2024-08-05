@@ -2,7 +2,7 @@ const { remote } = require("webdriverio");
 const { capabilities, wdOpts } = require("../config");
 const { WelcomePage, LoginPage } = require("../pages/pages");
 
-async function runTest() {
+async function runCase15() {
   wdOpts.capabilities = capabilities;
   const driver = await remote(wdOpts);
 
@@ -27,13 +27,16 @@ async function runTest() {
     // Click and select domain
     await loginPage.loginDomain(driver);
     await loginPage.loginDomain(driver);
-
   } catch (error) {
-    console.error("Error occurred:", error);
+    console.error("Error occurred in runCase15:", error);
   } finally {
     await driver.pause(30000);
     await driver.deleteSession();
   }
 }
 
-runTest().catch(console.error);
+runCase15()
+  .then(() => console.log("runCase15 success"))
+  .catch((error) => console.error("Error in runCase15:", error));
+
+module.exports = runCase15;

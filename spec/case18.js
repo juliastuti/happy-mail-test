@@ -2,7 +2,7 @@ const { remote } = require("webdriverio");
 const { capabilities, wdOpts } = require("../config");
 const { WelcomePage, LoginPage } = require("../pages/pages");
 
-async function runTest() {
+async function runCase18() {
   wdOpts.capabilities = capabilities;
   const driver = await remote(wdOpts);
 
@@ -52,13 +52,16 @@ async function runTest() {
     await yesNoDialog.waitForDisplayed(10000);
     await yesNoDialog.click();
     console.log("error invalid login 2");
-
   } catch (error) {
-    console.error("Error occurred:", error);
+    console.error("Error occurred in runCase18:", error);
   } finally {
     await driver.pause(30000);
     await driver.deleteSession();
   }
 }
 
-runTest().catch(console.error);
+runCase18()
+  .then(() => console.log("runCase18 success"))
+  .catch((error) => console.error("Error in runCase18:", error));
+
+module.exports = runCase18;

@@ -2,7 +2,7 @@ const { remote } = require("webdriverio");
 const { capabilities, wdOpts } = require("../config");
 const { WelcomePage, LoginPage } = require("../pages/pages");
 
-async function runTest() {
+async function runCase19and20() {
   wdOpts.capabilities = capabilities;
   const driver = await remote(wdOpts);
 
@@ -64,13 +64,16 @@ async function runTest() {
         'android=new UiSelector().resourceId("jp.co.i_bec.suteki_happy:id/common_header_view_btn_back_frame")'
       )
       .click();
-
   } catch (error) {
-    console.error("Error occurred:", error);
+    console.error("Error occurred runCase19and20:", error);
   } finally {
     await driver.pause(30000);
     await driver.deleteSession();
   }
 }
 
-runTest().catch(console.error);
+runCase19and20()
+  .then(() => console.log("runCase19and20 success"))
+  .catch((error) => console.error("Error in runCase19and20:", error));
+
+module.exports = runCase19and20;

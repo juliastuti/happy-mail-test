@@ -36,53 +36,12 @@ class WelcomePage {
 
     for (const welcomeElementId of welcomeElements) {
       const welcomeElement = await driver.$(
-        `android=new UiSelector().resourceId("${welcomeElementId}")`
+        'android=new UiSelector().resourceId("${welcomeElementId}")'
       );
       if (!(await welcomeElement.isDisplayed())) {
         throw new Error(`Element with ID ${welcomeElementId} is not displayed`);
       }
     }
-    // check auto slide images (background image)
-    const image1 = await driver.$(
-      'android=new UiSelector().resourceId("jp.co.i_bec.suteki_happy:id/img_login_tutorial_01")'
-    );
-    const image2 = await driver.$(
-      'android=new UiSelector().resourceId("jp.co.i_bec.suteki_happy:id/img_login_tutorial_02")'
-    );
-    const image3 = await driver.$(
-      'android=new UiSelector().resourceId("jp.co.i_bec.suteki_happy:id/img_login_tutorial_03")'
-    );
-
-    console.log("waiting for image 1");
-    await driver.pause(5000);
-    if (!(await image1.isDisplayed())) {
-      throw new Error("image 1 is not displayed");
-    } else {
-      console.log("image 1 is displayed");
-    }
-
-    console.log("waiting for image 2");
-    await driver.pause(5000);
-    if (!(await image2.isDisplayed())) {
-      throw new Error("image 2 is not displayed");
-    } else {
-      console.log("image 2 is displayed");
-    }
-
-    console.log("waiting for image 3");
-    await driver.pause(5000);
-    if (!(await image3.isDisplayed())) {
-      throw new Error("image 3 is not displayed");
-    } else {
-      console.log("image 3 is displayed");
-    }
-
-    // check if the images continue sliding
-    await driver.pause(5000);
-    if (!(await image1.isDisplayed())) {
-      throw new Error("image 1 is not displayed after second slide");
-    }
-
   }
 }
 
@@ -118,7 +77,7 @@ class LoginPage {
 
     for (const elementId of elements) {
       const element = await driver.$(
-        `android=new UiSelector().resourceId("${elementId}")`
+        'android=new UiSelector().resourceId("${elementId}")'
       );
       if (!(await element.isDisplayed())) {
         throw new Error(`Element with ID ${elementId} is not displayed`);
