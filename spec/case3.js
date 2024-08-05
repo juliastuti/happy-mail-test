@@ -27,8 +27,8 @@ async function runCase3() {
   }
 }
 
-runCase3()
-  .then(() => console.log('runCase3 success'))
-  .catch(error => console.error('Error in runCase3:', error));
+// runCase3()
+//   .then(() => console.log('runCase3 success'))
+//   .catch(error => console.error('Error in runCase3:', error));
 
 module.exports = runCase3;

@@ -46,8 +46,8 @@ async function runCase21() {
   }
 }
 
-runCase21()
-  .then(() => console.log("runCase21 success"))
-  .catch((error) => console.error("Error in runCase21:", error));
+// runCase21()
+//   .then(() => console.log("runCase21 success"))
+//   .catch((error) => console.error("Error in runCase21:", error));
 
 module.exports = runCase21;

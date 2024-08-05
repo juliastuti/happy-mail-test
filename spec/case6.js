@@ -39,8 +39,8 @@ async function runCase6() {
   }
 }
 
-runCase6()
-  .then(() => console.log("runCase6 success"))
-  .catch((error) => console.error("Error in runCase6:", error));
+// runCase6()
+//   .then(() => console.log("runCase6 success"))
+//   .catch((error) => console.error("Error in runCase6:", error));
 
 module.exports = runCase6;

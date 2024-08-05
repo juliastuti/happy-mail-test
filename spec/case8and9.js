@@ -46,8 +46,8 @@ async function runCase8And9() {
   }
 }
 
-runCase8And9()
-  .then(() => console.log("runCase8And9 success"))
-  .catch((error) => console.error("Error in runCase8And9:", error));
+// runCase8And9()
+//   .then(() => console.log("runCase8And9 success"))
+//   .catch((error) => console.error("Error in runCase8And9:", error));
 
 module.exports = runCase8And9;

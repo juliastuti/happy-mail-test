@@ -60,8 +60,8 @@ async function runCase18() {
   }
 }
 
-runCase18()
-  .then(() => console.log("runCase18 success"))
-  .catch((error) => console.error("Error in runCase18:", error));
+// runCase18()
+//   .then(() => console.log("runCase18 success"))
+//   .catch((error) => console.error("Error in runCase18:", error));
 
 module.exports = runCase18;

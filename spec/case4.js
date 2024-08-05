@@ -56,8 +56,8 @@ async function runCase4() {
   }
 }
 
-runCase4()
-  .then(() => console.log("runCase4 success"))
-  .catch((error) => console.error("Error in runCase4:", error));
+// runCase4()
+//   .then(() => console.log("runCase4 success"))
+//   .catch((error) => console.error("Error in runCase4:", error));
 
 module.exports = runCase4;

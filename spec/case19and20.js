@@ -72,8 +72,8 @@ async function runCase19and20() {
   }
 }
 
-runCase19and20()
-  .then(() => console.log("runCase19and20 success"))
-  .catch((error) => console.error("Error in runCase19and20:", error));
+// runCase19and20()
+//   .then(() => console.log("runCase19and20 success"))
+//   .catch((error) => console.error("Error in runCase19and20:", error));
 
 module.exports = runCase19and20;

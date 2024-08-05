@@ -46,8 +46,8 @@ async function runCase1And2() {
   }
 }
 
-runCase1And2()
-  .then(() => console.log('runCase1And2 success'))
-  .catch(error => console.error('Error in runCase1And2:', error));
+// runCase1And2()
+//   .then(() => console.log('runCase1And2 success'))
+//   .catch(error => console.error('Error in runCase1And2:', error));
 
 module.exports = runCase1And2;

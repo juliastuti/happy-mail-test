@@ -39,8 +39,8 @@ async function runCase12() {
   }
 }
 
-runCase12()
-  .then(() => console.log("runCase12 success"))
-  .catch((error) => console.error("Error in runCase12:", error));
+// runCase12()
+//   .then(() => console.log("runCase12 success"))
+//   .catch((error) => console.error("Error in runCase12:", error));
 
 module.exports = runCase12;
